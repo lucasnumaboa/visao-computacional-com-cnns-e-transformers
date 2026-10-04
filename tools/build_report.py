@@ -42,21 +42,23 @@ blockquote { border-left: 3px solid #0b3d63; margin: 6px 0; padding: 2px 10px; b
 .cover .meta { font-size: 11pt; line-height: 1.8; }
 .toc ul { list-style: none; padding-left: 0; } .toc li { margin: 3px 0; }
 .small { font-size: 8.8pt; }
+.repo { border: 2px solid #0b3d63; border-radius: 6px; background: #eef4f9; padding: 10px 14px; margin: 0 0 30px; font-size: 10.5pt; text-align: left; line-height: 1.6; }
+.repo code { font-size: 9.5pt; background: #fff; }
 .kpi { display: inline-block; border: 1px solid #b9c6d2; border-radius: 4px; padding: 3px 8px; margin: 2px 4px 2px 0; background: #f3f7fa; font-size: 9pt; }
 """
 
 
 def compress(src):
-    """Copia a figura como JPEG (largura máx. 1800 px) para o PDF não ficar pesado."""
+    """Copia a figura como JPEG (largura máx. 1200 px, qualidade 75) para o PDF não ficar pesado."""
     from PIL import Image
     path = (ROOT / "relatorio" / src).resolve()
     out = ROOT / "relatorio" / "_img" / (path.parent.name + "_" + path.stem + ".jpg")
     out.parent.mkdir(exist_ok=True)
     if not out.exists() or out.stat().st_mtime < path.stat().st_mtime:
         im = Image.open(path).convert("RGB")
-        if im.width > 1800:
-            im = im.resize((1800, round(im.height * 1800 / im.width)), Image.LANCZOS)
-        im.save(out, quality=88, optimize=True)
+        if im.width > 1200:
+            im = im.resize((1200, round(im.height * 1200 / im.width)), Image.LANCZOS)
+        im.save(out, quality=75, optimize=True)
     return "_img/" + out.name
 
 
@@ -82,6 +84,12 @@ def main():
                     f"<style>{CSS}</style></head><body>{body}</body></html>", encoding="utf-8")
     subprocess.run([str(EDGE), "--headless", "--disable-gpu", "--no-pdf-header-footer", f"--print-to-pdf={PDF}",
                     HTML.as_uri()], check=True, timeout=180)
+    # O Chromium reencoda as imagens em alta qualidade; recomprimimos para caber no limite de upload (20 MB)
+    import pymupdf
+    doc = pymupdf.open(PDF)
+    doc.rewrite_images(dpi_threshold=160, dpi_target=150, quality=72)
+    tmp = PDF.with_suffix(".tmp.pdf"); doc.save(tmp, garbage=4, deflate=True); doc.close()
+    tmp.replace(PDF)
     print("PDF:", PDF, f"{PDF.stat().st_size / 1e6:.1f} MB")
 
 

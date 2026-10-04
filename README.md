@@ -53,9 +53,11 @@ tools/py2nb.py        converte notebooks/src/*.py → .ipynb
 tools/run_nb.py       executa um notebook célula a célula, com log, salvando após cada célula
 tools/sync_md.py      atualiza só o texto (markdown) de um notebook já executado
 tools/nb_tail.py      mostra as últimas saídas de um notebook (acompanhar execuções longas)
-tools/build_report.py gera o PDF do relatório (Markdown → HTML → PDF via Edge headless)
+tools/build_report.py gera o PDF do relatório (Markdown → HTML → PDF via Edge headless, com imagens recomprimidas)
+tools/compress_nb_images.py  converte as imagens embutidas nos notebooks para JPEG (arquivos menores)
+tools/sanitize_outputs.py    remove caminhos locais das saídas dos notebooks
 relatorio/            PDF do relatório e as seções em Markdown
-figs/                 figuras geradas pelos notebooks (usadas no relatório)
+figs/                 figuras em alta resolução geradas pelos notebooks (só no GitHub; no ZIP do Moodle as figuras estão dentro dos notebooks e do PDF)
 spec.md               plano do projeto e decisões técnicas
 resumo_aulas.md       resumo das 8 aulas usado para alinhar as decisões ao conteúdo da disciplina
 rubrica_checklist.md  onde cada item da rubrica é demonstrado

@@ -1,5 +1,12 @@
 <div class="cover" markdown="1">
 
+<div class="repo">
+<b>Código, notebooks e instruções para rodar:</b><br>
+<a href="https://github.com/lucasnumaboa/visao-computacional-com-cnns-e-transformers">https://github.com/lucasnumaboa/visao-computacional-com-cnns-e-transformers</a><br>
+<code>git clone https://github.com/lucasnumaboa/visao-computacional-com-cnns-e-transformers.git</code><br>
+<span class="small">Ou abra cada notebook direto no Google Colab pelos botões "Abrir no Colab" do README (GPU T4 → Executar tudo).</span>
+</div>
+
 <h1>Visão Computacional com CNNs e Transformers</h1>
 
 <div class="sub">Projeto de Disciplina: relatório técnico</div>
@@ -8,8 +15,7 @@
 <b>Aluno:</b> Lucas de Oliveira Ferreira<br>
 <b>Instituição:</b> Instituto INFNET<br>
 <b>Disciplina:</b> Visão Computacional com CNNs e Transformers [26E3_3]<br>
-<b>Data:</b> outubro de 2026<br><br>
-<b>Código e notebooks:</b> <a href="https://github.com/lucasnumaboa/visao-computacional-com-cnns-e-transformers">github.com/lucasnumaboa/visao-computacional-com-cnns-e-transformers</a>
+<b>Data:</b> outubro de 2026
 </div>
 
 </div>
