@@ -1,0 +1,173 @@
+{
+  "n_imagens": 1501,
+  "por_origem": {
+    "foto_positiva": 611,
+    "foto_negativa": 589,
+    "anúncio": 301
+  },
+  "tau_p95": 0.23368288576602936,
+  "tau_categoria_descartado": 0.274478554725647,
+  "zero_shot_top1": 0.5980066445182725,
+  "zero_shot_top3": 0.7674418604651163,
+  "top10": [
+    {
+      "conceito": "a product on a plain white background",
+      "frequência": 0.2059,
+      "score_médio_presentes": 0.25360000133514404
+    },
+    {
+      "conceito": "text and a logo",
+      "frequência": 0.1932,
+      "score_médio_presentes": 0.24719999730587006
+    },
+    {
+      "conceito": "a person",
+      "frequência": 0.1399,
+      "score_médio_presentes": 0.24390000104904175
+    },
+    {
+      "conceito": "an animal",
+      "frequência": 0.1359,
+      "score_médio_presentes": 0.25209999084472656
+    },
+    {
+      "conceito": "clothing",
+      "frequência": 0.1033,
+      "score_médio_presentes": 0.24529999494552612
+    },
+    {
+      "conceito": "food",
+      "frequência": 0.1019,
+      "score_médio_presentes": 0.25209999084472656
+    },
+    {
+      "conceito": "a man",
+      "frequência": 0.0799,
+      "score_médio_presentes": 0.24369999766349792
+    },
+    {
+      "conceito": "a woman",
+      "frequência": 0.0766,
+      "score_médio_presentes": 0.24539999663829803
+    },
+    {
+      "conceito": "outdoor nature scenery",
+      "frequência": 0.0766,
+      "score_médio_presentes": 0.2533000111579895
+    },
+    {
+      "conceito": "a child",
+      "frequência": 0.0746,
+      "score_médio_presentes": 0.25110000371932983
+    }
+  ],
+  "consultas": [
+    {
+      "consulta": "a car",
+      "score top-1": 0.26980000734329224,
+      "score top-5": 0.25760000944137573,
+      "n ≥ 0.22 (recall)": 58,
+      "n ≥ 0.25": 9,
+      "n ≥ P95 = 0.234": 27,
+      "n ≥ 0.28 (precisão)": 0,
+      "% anúncios no top-5": 0.0
+    },
+    {
+      "consulta": "a red sports car on the road",
+      "score top-1": 0.25029999017715454,
+      "score top-5": 0.23829999566078186,
+      "n ≥ 0.22 (recall)": 11,
+      "n ≥ 0.25": 2,
+      "n ≥ P95 = 0.234": 6,
+      "n ≥ 0.28 (precisão)": 0,
+      "% anúncios no top-5": 0.0
+    },
+    {
+      "consulta": "food",
+      "score top-1": 0.27549999952316284,
+      "score top-5": 0.26910001039505005,
+      "n ≥ 0.22 (recall)": 195,
+      "n ≥ 0.25": 63,
+      "n ≥ P95 = 0.234": 112,
+      "n ≥ 0.28 (precisão)": 0,
+      "% anúncios no top-5": 0.0
+    },
+    {
+      "consulta": "a cup of coffee",
+      "score top-1": 0.2964000105857849,
+      "score top-5": 0.2628999948501587,
+      "n ≥ 0.22 (recall)": 22,
+      "n ≥ 0.25": 10,
+      "n ≥ P95 = 0.234": 13,
+      "n ≥ 0.28 (precisão)": 2,
+      "% anúncios no top-5": 0.0
+    },
+    {
+      "consulta": "a smiling woman",
+      "score top-1": 0.2734000086784363,
+      "score top-5": 0.2508000135421753,
+      "n ≥ 0.22 (recall)": 73,
+      "n ≥ 0.25": 5,
+      "n ≥ P95 = 0.234": 22,
+      "n ≥ 0.28 (precisão)": 0,
+      "% anúncios no top-5": 0.0
+    },
+    {
+      "consulta": "a woman applying makeup",
+      "score top-1": 0.2955999970436096,
+      "score top-5": 0.26260000467300415,
+      "n ≥ 0.22 (recall)": 74,
+      "n ≥ 0.25": 10,
+      "n ≥ P95 = 0.234": 36,
+      "n ≥ 0.28 (precisão)": 1,
+      "% anúncios no top-5": 0.0
+    },
+    {
+      "consulta": "a mobile phone advertisement",
+      "score top-1": 0.29910001158714294,
+      "score top-5": 0.2653999924659729,
+      "n ≥ 0.22 (recall)": 292,
+      "n ≥ 0.25": 26,
+      "n ≥ P95 = 0.234": 117,
+      "n ≥ 0.28 (precisão)": 2,
+      "% anúncios no top-5": 0.6
+    },
+    {
+      "consulta": "luxury",
+      "score top-1": 0.2590000033378601,
+      "score top-5": 0.24310000240802765,
+      "n ≥ 0.22 (recall)": 144,
+      "n ≥ 0.25": 1,
+      "n ≥ P95 = 0.234": 28,
+      "n ≥ 0.28 (precisão)": 0,
+      "% anúncios no top-5": 0.2
+    },
+    {
+      "consulta": "freedom and adventure",
+      "score top-1": 0.2572000026702881,
+      "score top-5": 0.2467000037431717,
+      "n ≥ 0.22 (recall)": 74,
+      "n ≥ 0.25": 4,
+      "n ≥ P95 = 0.234": 21,
+      "n ≥ 0.28 (precisão)": 0,
+      "% anúncios no top-5": 0.0
+    },
+    {
+      "consulta": "family happiness",
+      "score top-1": 0.28049999475479126,
+      "score top-5": 0.2612999975681305,
+      "n ≥ 0.22 (recall)": 56,
+      "n ≥ 0.25": 10,
+      "n ≥ P95 = 0.234": 27,
+      "n ≥ 0.28 (precisão)": 1,
+      "% anúncios no top-5": 0.0
+    }
+  ],
+  "busca_legenda_foto": {
+    "R@1": 0.3989856297548605,
+    "R@5": 0.643279797125951,
+    "R@10": 0.727810650887574,
+    "R@50": 0.8613693998309383
+  },
+  "modality_gap": 0.9070771932601929
+}

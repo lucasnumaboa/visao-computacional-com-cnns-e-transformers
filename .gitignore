@@ -1,0 +1,11 @@
+# ambiente e dados (os notebooks baixam os datasets automaticamente)
+.venv/
+data/
+__pycache__/
+.ipynb_checkpoints/
+# arquivos gerados / pessoais
+relatorio/_img/
+relatorio/relatorio.html
+entrega/
+# material da disciplina (direitos da INFNET)
+aula_*.pdf

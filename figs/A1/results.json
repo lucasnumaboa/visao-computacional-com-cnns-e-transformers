@@ -1,0 +1,232 @@
+{
+  "modelo_escolhido": "E3 fine-tuning",
+  "comparacao_teste": {
+    "E1": {
+      "experimento": "E1 do zero",
+      "parâmetros_treináveis": 2855618,
+      "val_bal_acc": 0.8333333333333334,
+      "teste_acc": 0.7846153846153846,
+      "teste_bal_acc": 0.7991452991452992,
+      "teste_recall_defeito": 0.7264957264957265,
+      "teste_AUC": 0.8566732412886259,
+      "escapes_FN": 32,
+      "refugos_FP": 10
+    },
+    "E2": {
+      "experimento": "E2 linear probe",
+      "parâmetros_treináveis": 1538,
+      "val_bal_acc": 0.9871794871794872,
+      "teste_acc": 0.9692307692307692,
+      "teste_bal_acc": 0.9722222222222223,
+      "teste_recall_defeito": 0.9572649572649573,
+      "teste_AUC": 0.9937541091387245,
+      "escapes_FN": 5,
+      "refugos_FP": 1
+    },
+    "E3": {
+      "experimento": "E3 fine-tuning",
+      "parâmetros_treináveis": 85800194,
+      "val_bal_acc": 1.0,
+      "teste_acc": 1.0,
+      "teste_bal_acc": 1.0,
+      "teste_recall_defeito": 1.0,
+      "teste_AUC": 1.0,
+      "escapes_FN": 0,
+      "refugos_FP": 0
+    },
+    "E4": {
+      "experimento": "E4 fine-tuning + CutMix",
+      "parâmetros_treináveis": 85800194,
+      "val_bal_acc": 0.9957264957264957,
+      "teste_acc": 0.9897435897435898,
+      "teste_bal_acc": 0.9914529914529915,
+      "teste_recall_defeito": 0.9829059829059829,
+      "teste_AUC": 0.9992329607714223,
+      "escapes_FN": 2,
+      "refugos_FP": 0
+    },
+    "E5": {
+      "experimento": "E5 Swin-T fine-tuning",
+      "parâmetros_treináveis": 27520892,
+      "val_bal_acc": 0.9957264957264957,
+      "teste_acc": 0.9897435897435898,
+      "teste_bal_acc": 0.9914529914529915,
+      "teste_recall_defeito": 0.9829059829059829,
+      "teste_AUC": 0.9989042296734605,
+      "escapes_FN": 2,
+      "refugos_FP": 0
+    },
+    "E6": {
+      "experimento": "E6 ResNet-50 fine-tuning",
+      "parâmetros_treináveis": 23512130,
+      "val_bal_acc": 0.9957264957264957,
+      "teste_acc": 0.9948717948717949,
+      "teste_bal_acc": 0.9957264957264957,
+      "teste_recall_defeito": 0.9914529914529915,
+      "teste_AUC": 1.0,
+      "escapes_FN": 1,
+      "refugos_FP": 0
+    }
+  },
+  "positional_encoding": [
+    {
+      "cenário": "sem positional encoding",
+      "max_diferença_absoluta": 3e-06,
+      "cosseno_médio_original_vs_embaralhada": 1.0
+    },
+    {
+      "cenário": "com positional encoding",
+      "max_diferença_absoluta": 3.509675,
+      "cosseno_médio_original_vs_embaralhada": 0.152189
+    }
+  ],
+  "validacao": {
+    "E1": {
+      "name": "E1 do zero",
+      "best_epoch": 34,
+      "train_time_s": 133.0916,
+      "trainable_params": 2855618,
+      "loss": 0.4193,
+      "acc": 0.8205,
+      "bacc": 0.8333,
+      "recall_def": 0.7692,
+      "auc": 0.8615
+    },
+    "E2": {
+      "name": "E2 linear probe",
+      "best_epoch": 33,
+      "train_time_s": 8.8073,
+      "trainable_params": 1538,
+      "loss": 0.0788,
+      "acc": 0.9846,
+      "bacc": 0.9872,
+      "recall_def": 0.9744,
+      "auc": 0.998
+    },
+    "E3": {
+      "name": "E3 fine-tuning",
+      "best_epoch": 10,
+      "train_time_s": 181.5528,
+      "trainable_params": 85800194,
+      "loss": 0.0027,
+      "acc": 1.0,
+      "bacc": 1.0,
+      "recall_def": 1.0,
+      "auc": 1.0
+    },
+    "E4": {
+      "name": "E4 fine-tuning + CutMix",
+      "best_epoch": 10,
+      "train_time_s": 184.5265,
+      "trainable_params": 85800194,
+      "loss": 0.0274,
+      "acc": 0.9949,
+      "bacc": 0.9957,
+      "recall_def": 0.9915,
+      "auc": 0.9999
+    },
+    "E5": {
+      "name": "E5 Swin-T fine-tuning",
+      "best_epoch": 9,
+      "train_time_s": 129.8871,
+      "trainable_params": 27520892,
+      "loss": 0.0251,
+      "acc": 0.9949,
+      "bacc": 0.9957,
+      "recall_def": 0.9915,
+      "auc": 0.9999
+    },
+    "E6": {
+      "name": "E6 ResNet-50 fine-tuning",
+      "best_epoch": 10,
+      "train_time_s": 91.636,
+      "trainable_params": 23512130,
+      "loss": 0.0266,
+      "acc": 0.9949,
+      "bacc": 0.9957,
+      "recall_def": 0.9915,
+      "auc": 0.9996
+    }
+  },
+  "teste": {
+    "loss": 0.0032,
+    "acc": 1.0,
+    "bacc": 1.0,
+    "recall_def": 1.0,
+    "auc": 1.0
+  },
+  "matriz_confusao_teste": [
+    [
+      78,
+      0
+    ],
+    [
+      0,
+      117
+    ]
+  ],
+  "cabeca_visualizada": 7,
+  "fracao_atencao_fundo": {
+    "defeituosas": 0.6857035369572476,
+    "ok": 0.4668176768299861
+  },
+  "contrafactual_fundo": [
+    {
+      "cenário": "original",
+      "accuracy": 1.0,
+      "recall_defeito": 1.0,
+      "especificidade": 1.0,
+      "predições_alteradas": 0,
+      "p_def_media_OK": 0.00559999980032444,
+      "p_def_media_defeituosas": 0.9987999796867371
+    },
+    {
+      "cenário": "cantos brancos (218)",
+      "accuracy": 0.9744,
+      "recall_defeito": 0.9573,
+      "especificidade": 1.0,
+      "predições_alteradas": 5,
+      "p_def_media_OK": 0.0003000000142492354,
+      "p_def_media_defeituosas": 0.95169997215271
+    },
+    {
+      "cenário": "cantos cinza (157)",
+      "accuracy": 0.9795,
+      "recall_defeito": 0.9658,
+      "especificidade": 1.0,
+      "predições_alteradas": 4,
+      "p_def_media_OK": 0.0003000000142492354,
+      "p_def_media_defeituosas": 0.9679999947547913
+    }
+  ],
+  "subgrupos_teste": [
+    {
+      "label": "def_front",
+      "fundo_tipo": "branco",
+      "n": 25,
+      "accuracy": 1.0,
+      "p_def_media": 0.9945999979972839
+    },
+    {
+      "label": "def_front",
+      "fundo_tipo": "cinza",
+      "n": 92,
+      "accuracy": 1.0,
+      "p_def_media": 0.9998999834060669
+    },
+    {
+      "label": "ok_front",
+      "fundo_tipo": "branco",
+      "n": 57,
+      "accuracy": 1.0,
+      "p_def_media": 0.007400000002235174
+    },
+    {
+      "label": "ok_front",
+      "fundo_tipo": "cinza",
+      "n": 21,
+      "accuracy": 1.0,
+      "p_def_media": 0.00039999998989515007
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+# PyTorch/TorchVision: instale antes, com a versão de CUDA da sua máquina
+# (ex.: pip install torch torchvision --index-url https://download.pytorch.org/whl/cu126).
+# No Google Colab, tudo isto já vem instalado, exceto CLIP e torch-fidelity, que os notebooks instalam sozinhos.
+numpy
+pandas
+matplotlib
+pillow
+scikit-learn
+scipy
+openpyxl
+tqdm
+ftfy
+regex
+requests
+transformers
+torch-fidelity
+git+https://github.com/openai/CLIP.git
+# para executar/gerar os notebooks e o relatório
+jupyter
+nbformat
+nbclient
+nbconvert
+ipykernel
+markdown

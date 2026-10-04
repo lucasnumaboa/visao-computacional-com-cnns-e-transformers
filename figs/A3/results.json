@@ -1,0 +1,20 @@
+{
+  "n_imagens": 1764,
+  "n_treino": 1234,
+  "n_val": 265,
+  "n_teste": 265,
+  "melhor_epoca": 15,
+  "val_acc_melhor_epoca": 0.99245285987854,
+  "test_accuracy": 0.9962264150943396,
+  "test_balanced_accuracy": 0.9973544973544973,
+  "accuracy_por_classe": {
+    "bike": 0.9815,
+    "cars": 1.0,
+    "cats": 1.0,
+    "dogs": 1.0,
+    "flowers": 1.0,
+    "horses": 1.0,
+    "human": 1.0
+  },
+  "parametros_treinaveis": 14343
+}
