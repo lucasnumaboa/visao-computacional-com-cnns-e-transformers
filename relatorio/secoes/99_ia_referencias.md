@@ -47,10 +47,10 @@ Conforme a política da disciplina ("Sinal Verde"), declaro o uso de ferramentas
 
 **Datasets** (Kaggle)
 
-- *Casting Product Image Data for Quality Inspection*, Ravirajsinh Dabhi. CC BY-NC-ND 4.0. `ravirajsinh45/real-life-industrial-dataset-of-casting-product`
-- *ADS-16 Computational Advertising Dataset*, Giorgio Roffo. `groffo/ads16-dataset`
-- *Images Dataset*, Pavan Sanagapati. CC0. `pavansanagapati/images-dataset`
-- *COVID-19 Radiography Database*, Tawsifur Rahman et al. `tawsifurrahman/covid19-radiography-database`
+- *Casting Product Image Data for Quality Inspection*, Ravirajsinh Dabhi. CC BY-NC-ND 4.0. <https://www.kaggle.com/datasets/ravirajsinh45/real-life-industrial-dataset-of-casting-product>
+- *ADS-16 Computational Advertising Dataset*, Giorgio Roffo. <https://www.kaggle.com/datasets/groffo/ads16-dataset>
+- *Images Dataset*, Pavan Sanagapati. CC0. <https://www.kaggle.com/datasets/pavansanagapati/images-dataset>
+- *COVID-19 Radiography Database*, Tawsifur Rahman et al. <https://www.kaggle.com/datasets/tawsifurrahman/covid19-radiography-database>
 
 **Software:** PyTorch e TorchVision; OpenAI CLIP (`github.com/openai/CLIP`); torch-fidelity; scikit-learn; Matplotlib; pandas.
 

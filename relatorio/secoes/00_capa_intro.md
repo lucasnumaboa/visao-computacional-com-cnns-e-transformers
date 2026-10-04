@@ -48,6 +48,15 @@ Este relatório documenta as quatro atividades do Projeto de Disciplina. Em cada
 | A4.1 | Diagnosticar e corrigir uma triagem de COVID-19 que "ignora positivos" | Diagnóstico, cGAN (DCGAN condicional) com ablação de estabilidade, experimento controlado de recall, plano e critério de adoção clínica | `A4_estudo_caso_raio_x.ipynb` |
 | A4.2 | Diagnosticar um sistema de tráfego que falha em produção | Análise escrita (sem implementação) | — |
 
+**Datasets e links para download.** Todos são públicos no Kaggle. Os notebooks baixam cada um automaticamente pelo endpoint `https://www.kaggle.com/api/v1/datasets/download/<dono>/<dataset>`, sem credencial.
+
+| Atividade | Dataset | Link para download | Licença | Uso no projeto |
+|---|---|---|---|---|
+| A1 | Casting Product Image Data for Quality Inspection | <https://www.kaggle.com/datasets/ravirajsinh45/real-life-industrial-dataset-of-casting-product> | CC BY-NC-ND 4.0 | subconjunto `casting_512x512` (1.300 imagens) |
+| A2 | ADS-16 Computational Advertising Dataset | <https://www.kaggle.com/datasets/groffo/ads16-dataset> | conforme o Kaggle | 300 anúncios + ~1.200 fotos dos participantes |
+| A3 | Images Dataset (Pavan Sanagapati) | <https://www.kaggle.com/datasets/pavansanagapati/images-dataset> | CC0 | 7 classes, 1.764 imagens após a limpeza |
+| A4.1 | COVID-19 Radiography Database | <https://www.kaggle.com/datasets/tawsifurrahman/covid19-radiography-database> | © autores originais | cenário 840/240/120 + teste ampliado de 1.500 |
+
 **Reprodutibilidade.** O código, os notebooks e as instruções estão em https://github.com/lucasnumaboa/visao-computacional-com-cnns-e-transformers (botão "Abrir no Colab" para cada notebook). Os quatro notebooks rodam do início ao fim no Google Colab com GPU T4, sem montar o Drive e sem credenciais. Os datasets são baixados do endpoint público do Kaggle (`/api/v1/datasets/download/<owner>/<dataset>`), com `kagglehub` como alternativa. Cada notebook informa no topo a memória e o tempo estimados, e fixa sementes aleatórias. Os resultados deste relatório vêm da execução completa dos notebooks numa GPU NVIDIA RTX 3050 (6 GB). O código detecta a VRAM disponível e mantém o mesmo batch efetivo por acumulação de gradiente, de modo que os números se reproduzem no T4.
 
 **Alinhamento com a disciplina.** As técnicas usadas vêm das aulas: TorchVision Weights API e feature extraction (Aula 01), self-attention e bloco Transformer (Aula 02), receita de fine-tuning de encoders (Aula 03), ViT, CutMix e attention rollout (Aula 04), atenção por cabeça (Aula 05), CLIP e prompt ensembling (Aula 06), DCGAN/cGAN e estabilização (Aula 07), FID, calibração de threshold e protocolo de avaliação com dados sintéticos (Aula 08). Quando uma escolha foge do material das aulas, ela é justificada no texto.

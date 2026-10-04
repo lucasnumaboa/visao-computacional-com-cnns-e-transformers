@@ -2,7 +2,7 @@
 
 ## 3.1 Definição do problema
 
-Extrair inteligência semântica do corpus de imagens do **ADS-16** (Roffo & Vinciarelli, 2016) **sem treinar nenhum modelo**: só embeddings pré-treinados do CLIP e consultas em linguagem natural. São duas tarefas:
+Extrair inteligência semântica do corpus de imagens do **ADS-16** (Roffo & Vinciarelli, 2016; download: <https://www.kaggle.com/datasets/groffo/ads16-dataset>) **sem treinar nenhum modelo**: só embeddings pré-treinados do CLIP e consultas em linguagem natural. São duas tarefas:
 
 - **2.1:** ranking dos objetos e conceitos mais presentes no corpus, com um threshold justificado.
 - **2.2:** busca de imagens a partir de consultas em texto.

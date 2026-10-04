@@ -48,6 +48,15 @@ Este relatório documenta as quatro atividades do Projeto de Disciplina. Em cada
 | A4.1 | Diagnosticar e corrigir uma triagem de COVID-19 que "ignora positivos" | Diagnóstico, cGAN (DCGAN condicional) com ablação de estabilidade, experimento controlado de recall, plano e critério de adoção clínica | `A4_estudo_caso_raio_x.ipynb` |
 | A4.2 | Diagnosticar um sistema de tráfego que falha em produção | Análise escrita (sem implementação) | — |
 
+**Datasets e links para download.** Todos são públicos no Kaggle. Os notebooks baixam cada um automaticamente pelo endpoint `https://www.kaggle.com/api/v1/datasets/download/<dono>/<dataset>`, sem credencial.
+
+| Atividade | Dataset | Link para download | Licença | Uso no projeto |
+|---|---|---|---|---|
+| A1 | Casting Product Image Data for Quality Inspection | <https://www.kaggle.com/datasets/ravirajsinh45/real-life-industrial-dataset-of-casting-product> | CC BY-NC-ND 4.0 | subconjunto `casting_512x512` (1.300 imagens) |
+| A2 | ADS-16 Computational Advertising Dataset | <https://www.kaggle.com/datasets/groffo/ads16-dataset> | conforme o Kaggle | 300 anúncios + ~1.200 fotos dos participantes |
+| A3 | Images Dataset (Pavan Sanagapati) | <https://www.kaggle.com/datasets/pavansanagapati/images-dataset> | CC0 | 7 classes, 1.764 imagens após a limpeza |
+| A4.1 | COVID-19 Radiography Database | <https://www.kaggle.com/datasets/tawsifurrahman/covid19-radiography-database> | © autores originais | cenário 840/240/120 + teste ampliado de 1.500 |
+
 **Reprodutibilidade.** O código, os notebooks e as instruções estão em https://github.com/lucasnumaboa/visao-computacional-com-cnns-e-transformers (botão "Abrir no Colab" para cada notebook). Os quatro notebooks rodam do início ao fim no Google Colab com GPU T4, sem montar o Drive e sem credenciais. Os datasets são baixados do endpoint público do Kaggle (`/api/v1/datasets/download/<owner>/<dataset>`), com `kagglehub` como alternativa. Cada notebook informa no topo a memória e o tempo estimados, e fixa sementes aleatórias. Os resultados deste relatório vêm da execução completa dos notebooks numa GPU NVIDIA RTX 3050 (6 GB). O código detecta a VRAM disponível e mantém o mesmo batch efetivo por acumulação de gradiente, de modo que os números se reproduzem no T4.
 
 **Alinhamento com a disciplina.** As técnicas usadas vêm das aulas: TorchVision Weights API e feature extraction (Aula 01), self-attention e bloco Transformer (Aula 02), receita de fine-tuning de encoders (Aula 03), ViT, CutMix e attention rollout (Aula 04), atenção por cabeça (Aula 05), CLIP e prompt ensembling (Aula 06), DCGAN/cGAN e estabilização (Aula 07), FID, calibração de threshold e protocolo de avaliação com dados sintéticos (Aula 08). Quando uma escolha foge do material das aulas, ela é justificada no texto.
@@ -59,7 +68,7 @@ Este relatório documenta as quatro atividades do Projeto de Disciplina. Em cada
 
 **Domínio: indústria, controle de qualidade.** O objetivo é classificar rotores de bombas submersíveis produzidos por fundição (vista superior) em **defeituoso** (`def_front`: porosidade, rebarbas, falhas de borda) ou **OK** (`ok_front`). Hoje a inspeção é manual, lenta e sujeita a fadiga, e deixar passar uma peça defeituosa (falso negativo) pode levar à rejeição de um lote inteiro. O tema se liga à minha atuação com ERP para indústria, em que os resultados de inspeção alimentam o módulo de controle de qualidade.
 
-**Dataset:** *Casting Product Image Data for Quality Inspection* (Kaggle, CC BY-NC-ND 4.0). **Decisão:** usar só o subconjunto `casting_512x512`, com **1.300 fotos originais** (781 defeituosas e 519 OK). O conjunto 300×300, de 7.348 imagens, **já vem com augmentation aplicada** pelo autor, então dividi-lo colocaria versões da mesma peça no treino e no teste, um vazamento. Fizemos nosso próprio split estratificado 70/15/15 (910 / 195 / 195) e nossa própria augmentation, só no treino.
+**Dataset:** *Casting Product Image Data for Quality Inspection* (Kaggle, CC BY-NC-ND 4.0). Download: <https://www.kaggle.com/datasets/ravirajsinh45/real-life-industrial-dataset-of-casting-product>. **Decisão:** usar só o subconjunto `casting_512x512`, com **1.300 fotos originais** (781 defeituosas e 519 OK). O conjunto 300×300, de 7.348 imagens, **já vem com augmentation aplicada** pelo autor, então dividi-lo colocaria versões da mesma peça no treino e no teste, um vazamento. Fizemos nosso próprio split estratificado 70/15/15 (910 / 195 / 195) e nossa própria augmentation, só no treino.
 
 **Achado na exploração: um possível atalho.** As fotos foram tiradas sobre dois tipos de fundo. **79% das defeituosas estão sobre fundo cinza e 73% das OK sobre fundo branco.** Um modelo poderia acertar boa parte olhando só o fundo (*shortcut*, Aula 08). Por isso o split foi estratificado também por tipo de fundo, e o atalho foi testado explicitamente na seção 2.4.
 
@@ -275,7 +284,7 @@ Os três modelos pré-treinados foram ajustados com **a mesma receita** (E3, E5,
 
 ## 3.1 Definição do problema
 
-Extrair inteligência semântica do corpus de imagens do **ADS-16** (Roffo & Vinciarelli, 2016) **sem treinar nenhum modelo**: só embeddings pré-treinados do CLIP e consultas em linguagem natural. São duas tarefas:
+Extrair inteligência semântica do corpus de imagens do **ADS-16** (Roffo & Vinciarelli, 2016; download: <https://www.kaggle.com/datasets/groffo/ads16-dataset>) **sem treinar nenhum modelo**: só embeddings pré-treinados do CLIP e consultas em linguagem natural. São duas tarefas:
 
 - **2.1:** ranking dos objetos e conceitos mais presentes no corpus, com um threshold justificado.
 - **2.2:** busca de imagens a partir de consultas em texto.
@@ -465,7 +474,7 @@ O objetivo contrastivo só exige a **ordenação** (o par certo mais perto que o
 
 ## 4.1 Definição do problema
 
-Classificar as imagens do *Images Dataset* (Kaggle, `pavansanagapati/images-dataset`) em 7 categorias: `bike`, `cars`, `cats`, `dogs`, `flowers`, `horses` e `human`. O método é *transfer learning* por **feature extraction**: o backbone pré-treinado fica congelado e só uma nova camada de classificação é treinada, em um único treino.
+Classificar as imagens do *Images Dataset* (Kaggle, `pavansanagapati/images-dataset`; download: <https://www.kaggle.com/datasets/pavansanagapati/images-dataset>) em 7 categorias: `bike`, `cars`, `cats`, `dogs`, `flowers`, `horses` e `human`. O método é *transfer learning* por **feature extraction**: o backbone pré-treinado fica congelado e só uma nova camada de classificação é treinada, em um único treino.
 
 **Inventário e limpeza.** A inspeção dos dados revelou três problemas antes de qualquer treino:
 
@@ -601,7 +610,7 @@ Um grupo entregou um sistema de triagem Normal / Pneumonia / COVID-19 com result
 
 A tarefa tem quatro partes: diagnosticar ao menos cinco problemas, implementar uma abordagem generativa para a escassez de COVID-19, medir o impacto no recall dessa classe e propor um plano integrado.
 
-**Dados.** Usamos a *COVID-19 Radiography Database* (Kaggle) e sorteamos com semente fixa **exatamente o cenário do enunciado**: Normal 840, Pneumonia viral 240 e COVID-19 120. Também separamos um **teste ampliado** com 1.500 radiografias reais fora dessas 1.200 (600 Normal, 300 Pneumonia, 600 COVID-19). Com só 18 COVID-19 no teste do cenário, cada caso vale 5,6 p.p. de recall, e o teste ampliado dá estimativas estáveis. As imagens são convertidas para tons de cinza em 128×128, a resolução que a GAN gera, para que reais e sintéticas passem pelo mesmo pipeline.
+**Dados.** Usamos a *COVID-19 Radiography Database* (Kaggle; download: <https://www.kaggle.com/datasets/tawsifurrahman/covid19-radiography-database>) e sorteamos com semente fixa **exatamente o cenário do enunciado**: Normal 840, Pneumonia viral 240 e COVID-19 120. Também separamos um **teste ampliado** com 1.500 radiografias reais fora dessas 1.200 (600 Normal, 300 Pneumonia, 600 COVID-19). Com só 18 COVID-19 no teste do cenário, cada caso vale 5,6 p.p. de recall, e o teste ampliado dá estimativas estáveis. As imagens são convertidas para tons de cinza em 128×128, a resolução que a GAN gera, para que reais e sintéticas passem pelo mesmo pipeline.
 
 > **Nota bibliográfica.** O enunciado atribui o artigo de referência a "Nour & Tariq (2023)". O DOI indicado (10.1038/s41598-023-37743-4) corresponde, segundo o Crossref e o Europe PMC, a *Dumakude & Ezugwu, "Automated COVID-19 detection with convolutional neural networks", Scientific Reports 13, 10607 (2023)*. Citamos o artigo pelo DOI fornecido. A afirmação de que o recall da classe COVID-19 fica abaixo de 60% em dados desbalanceados é atribuída ao enunciado.
 
@@ -1001,10 +1010,10 @@ Conforme a política da disciplina ("Sinal Verde"), declaro o uso de ferramentas
 
 **Datasets** (Kaggle)
 
-- *Casting Product Image Data for Quality Inspection*, Ravirajsinh Dabhi. CC BY-NC-ND 4.0. `ravirajsinh45/real-life-industrial-dataset-of-casting-product`
-- *ADS-16 Computational Advertising Dataset*, Giorgio Roffo. `groffo/ads16-dataset`
-- *Images Dataset*, Pavan Sanagapati. CC0. `pavansanagapati/images-dataset`
-- *COVID-19 Radiography Database*, Tawsifur Rahman et al. `tawsifurrahman/covid19-radiography-database`
+- *Casting Product Image Data for Quality Inspection*, Ravirajsinh Dabhi. CC BY-NC-ND 4.0. <https://www.kaggle.com/datasets/ravirajsinh45/real-life-industrial-dataset-of-casting-product>
+- *ADS-16 Computational Advertising Dataset*, Giorgio Roffo. <https://www.kaggle.com/datasets/groffo/ads16-dataset>
+- *Images Dataset*, Pavan Sanagapati. CC0. <https://www.kaggle.com/datasets/pavansanagapati/images-dataset>
+- *COVID-19 Radiography Database*, Tawsifur Rahman et al. <https://www.kaggle.com/datasets/tawsifurrahman/covid19-radiography-database>
 
 **Software:** PyTorch e TorchVision; OpenAI CLIP (`github.com/openai/CLIP`); torch-fidelity; scikit-learn; Matplotlib; pandas.
 

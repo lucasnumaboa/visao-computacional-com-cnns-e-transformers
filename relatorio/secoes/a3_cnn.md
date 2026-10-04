@@ -2,7 +2,7 @@
 
 ## 4.1 Definição do problema
 
-Classificar as imagens do *Images Dataset* (Kaggle, `pavansanagapati/images-dataset`) em 7 categorias: `bike`, `cars`, `cats`, `dogs`, `flowers`, `horses` e `human`. O método é *transfer learning* por **feature extraction**: o backbone pré-treinado fica congelado e só uma nova camada de classificação é treinada, em um único treino.
+Classificar as imagens do *Images Dataset* (Kaggle, `pavansanagapati/images-dataset`; download: <https://www.kaggle.com/datasets/pavansanagapati/images-dataset>) em 7 categorias: `bike`, `cars`, `cats`, `dogs`, `flowers`, `horses` e `human`. O método é *transfer learning* por **feature extraction**: o backbone pré-treinado fica congelado e só uma nova camada de classificação é treinada, em um único treino.
 
 **Inventário e limpeza.** A inspeção dos dados revelou três problemas antes de qualquer treino:
 
